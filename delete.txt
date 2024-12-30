@@ -1,0 +1,40 @@
+//func searchYouTubeTrailer(apiKey, title, year string) (string, error) {
+//	baseURL := "https://www.googleapis.com/youtube/v3/search"
+//	params := url.Values{}
+//	params.Add("key", apiKey)
+//	params.Add("part", "snippet")
+//	params.Add("q", fmt.Sprintf("%s %s trailer", title, year))
+//	params.Add("type", "video")
+//	params.Add("maxResults", "1")
+//
+//	requestURL := fmt.Sprintf("%s?%s", baseURL, params.Encode())
+//
+//	response, err := http.Get(requestURL)
+//	if err != nil {
+//		return "", err
+//	}
+//	defer response.Body.Close()
+//
+//	body, err := ioutil.ReadAll(response.Body)
+//	if err != nil {
+//		return "", err
+//	}
+//
+//	var result struct {
+//		Items []struct {
+//			ID struct {
+//				VideoID string `json:"videoId"`
+//			} `json:"id"`
+//		} `json:"items"`
+//	}
+//	err = json.Unmarshal(body, &result)
+//	if err != nil {
+//		return "", err
+//	}
+//
+//	if len(result.Items) > 0 {
+//		return "https://www.youtube.com/watch?v=" + result.Items[0].ID.VideoID, nil
+//	}
+//
+//	return "", fmt.Errorf("no trailer found")
+//}
